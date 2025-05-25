@@ -28,3 +28,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Logs
+Assets/Plugins/Sirenix
+Assets/Plugins/Sirenix.meta
+.idea
