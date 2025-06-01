@@ -1,0 +1,16 @@
+{
+    "name": "XIFramework",
+    "rootNamespace": "",
+    "references": [
+        "GUID:696c310495f29f442b73facc7263fde4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
