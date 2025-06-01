@@ -1,0 +1,17 @@
+{
+    "name": "ActionSM",
+    "rootNamespace": "",
+    "references": [
+        "GUID:696c310495f29f442b73facc7263fde4",
+        "GUID:4cd010799ec098546ac491d5ba331ce3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
