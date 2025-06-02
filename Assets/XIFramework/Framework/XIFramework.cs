@@ -158,21 +158,26 @@ namespace XIFramework
         }
         public T GetModel<T>() where T : IModel
         {
+            return default;
         }
         public T GetSystem<T>() where T : ISystem
         {
+            return default;
         }
         public T GetUtility<T>() where T : IUtility
         {
+            return default;
         }
         public void SendCommand<T>(T command) where T : ICommand
         {
         }
         public TResult SendCommand<TResult>(ICommand<TResult> command)
         {
+            return default;
         }
         public TResult SendQuery<TResult>(IQuery<TResult> query)
         {
+            return default;
         }
     }
 }
