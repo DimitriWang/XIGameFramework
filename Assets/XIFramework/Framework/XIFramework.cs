@@ -1,7 +1,6 @@
+
+
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace XIFramework
 {
@@ -36,6 +35,11 @@ namespace XIFramework
         
     }
 
+    public interface ISendCommand : IGetArchitecture
+    {
+        
+    }
+
     public interface IGetQuery : IGetArchitecture
     {
         
@@ -61,43 +65,63 @@ namespace XIFramework
         
     }
 
-    public interface IGetRegiterEvent
+    public interface IGetRegisterEvent
     {
         
     }
     #endregion
 
-    
+    #region Controller
+    public interface IController :
+        ISendCommand, IGetArchitecture, IGetModel, IGetUtility,
+        IGetRegisterEvent,IGetSystem,IGetQuery,IGetContainer
+    {
 
-    public interface IModel
+    }
+    #endregion
+
+    #region Model
+    public interface IModel : IGetArchitecture , ISetArchiteture , ISendEvent, IGetUtility
     {
         
     }
+    #endregion
 
-    public interface ISystem
+    #region System
+    public interface ISystem : IGetArchitecture, ISetArchiteture, IGetModel, IGetUtility,IGetSystem, IGetRegisterEvent,ISendEvent, IGetContainer
     {
         
     }
+    #endregion
 
+    #region Utility
     public interface IUtility
     {
         
     }
+    #endregion
 
-    public interface ICommand
+    #region Command
+    public interface ICommand : ISetArchiteture, IGetArchitecture, ISendEvent, IGetRegisterEvent, IGetModel, IGetUtility
+        ,IGetSystem, ISendCommand, IGetQuery, IGetContainer
     {
         void Execute();
     }
 
-    public interface ICommand<TResult>
+    public interface ICommand<TResult> : ISetArchiteture, IGetArchitecture, ISendEvent, IGetRegisterEvent, IGetModel, IGetUtility
+        ,IGetSystem, ISendCommand, IGetQuery, IGetContainer
     {
         TResult Execute();
     }
+    #endregion
 
-    public interface IQuery<TResult> : IGetArchitecture, ISetArchiteture
+    #region Query
+    public interface IQuery<TResult> : IGetArchitecture, ISetArchiteture, IGetModel, IGetSystem, IGetQuery
     {
-        
+        TResult Seek();
     }
+    #endregion
+
 
     public interface IGetArchitecture
     {
@@ -107,5 +131,48 @@ namespace XIFramework
     public interface ISetArchiteture
     {
         void SetArchitecture(IArchitecture architecture);
+    }
+    
+    public abstract partial class Architecure<TCore> : IArchitecture, IDisposable where TCore : class, IArchitecture, new()
+    {
+        public void Dispose()
+        {
+        }
+        public void Init()
+        {
+        }
+        public void Completed()
+        {
+        }
+        public void OnDestroy()
+        {
+        }
+        public void UnRegisterModel<T>(T model = default) where T : class, IModel
+        {
+        }
+        public void UnRegisterSystem<T>(T system = default) where T : class, ISystem
+        {
+        }
+        public void UnRegisterUtility<T>(T utility = default) where T : class, IUtility
+        {
+        }
+        public T GetModel<T>() where T : IModel
+        {
+        }
+        public T GetSystem<T>() where T : ISystem
+        {
+        }
+        public T GetUtility<T>() where T : IUtility
+        {
+        }
+        public void SendCommand<T>(T command) where T : ICommand
+        {
+        }
+        public TResult SendCommand<TResult>(ICommand<TResult> command)
+        {
+        }
+        public TResult SendQuery<TResult>(IQuery<TResult> query)
+        {
+        }
     }
 }
